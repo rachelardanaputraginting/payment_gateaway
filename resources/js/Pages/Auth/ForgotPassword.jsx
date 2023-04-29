@@ -9,7 +9,7 @@ export default function ForgotPassword({ status }) {
         email: '',
     });
 
-    const onHandleChange = (event) => {
+    const onChange = (event) => {
         setData(event.target.name, event.target.value);
     };
 
@@ -20,7 +20,7 @@ export default function ForgotPassword({ status }) {
     };
 
     return (
-        <GuestLayout>
+        <>
             <Head title="Forgot Password" />
 
             <div className="mb-4 text-sm text-gray-600">
@@ -38,7 +38,7 @@ export default function ForgotPassword({ status }) {
                     value={data.email}
                     className="mt-1 block w-full"
                     isFocused={true}
-                    onChange={onHandleChange}
+                    onChange={onChange}
                 />
 
                 <InputError message={errors.email} className="mt-2" />
@@ -49,6 +49,8 @@ export default function ForgotPassword({ status }) {
                     </PrimaryButton>
                 </div>
             </form>
-        </GuestLayout>
+        </>
     );
 }
+
+ForgotPassword.layout = page => <GuestLayout children={page}></GuestLayout>

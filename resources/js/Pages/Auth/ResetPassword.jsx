@@ -20,7 +20,7 @@ export default function ResetPassword({ token, email }) {
         };
     }, []);
 
-    const onHandleChange = (event) => {
+    const onChange = (event) => {
         setData(event.target.name, event.target.value);
     };
 
@@ -31,7 +31,7 @@ export default function ResetPassword({ token, email }) {
     };
 
     return (
-        <GuestLayout>
+        <>
             <Head title="Reset Password" />
 
             <form onSubmit={submit}>
@@ -45,7 +45,7 @@ export default function ResetPassword({ token, email }) {
                         value={data.email}
                         className="mt-1 block w-full"
                         autoComplete="username"
-                        onChange={onHandleChange}
+                        onChange={onChange}
                     />
 
                     <InputError message={errors.email} className="mt-2" />
@@ -62,7 +62,7 @@ export default function ResetPassword({ token, email }) {
                         className="mt-1 block w-full"
                         autoComplete="new-password"
                         isFocused={true}
-                        onChange={onHandleChange}
+                        onChange={onChange}
                     />
 
                     <InputError message={errors.password} className="mt-2" />
@@ -77,7 +77,7 @@ export default function ResetPassword({ token, email }) {
                         value={data.password_confirmation}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
-                        onChange={onHandleChange}
+                        onChange={onChange}
                     />
 
                     <InputError message={errors.password_confirmation} className="mt-2" />
@@ -89,6 +89,9 @@ export default function ResetPassword({ token, email }) {
                     </PrimaryButton>
                 </div>
             </form>
-        </GuestLayout>
+        </>
     );
 }
+
+
+ResetPassword.layout = page => <GuestLayout children={page}></GuestLayout>

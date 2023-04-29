@@ -1,6 +1,7 @@
-import Container from '@/Components/Container';
-import App from '@/Layouts/App';
+import React from 'react';
 import { Head } from '@inertiajs/react';
+import App from '@/Layouts/App';
+import Container from '@/Components/Container';
 
 export default function Dashboard(props) {
     return (

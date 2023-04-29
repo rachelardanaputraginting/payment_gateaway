@@ -20,7 +20,7 @@ export default function Login({ status, canResetPassword }) {
         };
     }, []);
 
-    const handleOnChange = (event) => {
+    const onChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 
@@ -31,7 +31,7 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <GuestLayout>
+        <>
             <Head title="Log in" />
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
@@ -48,7 +48,7 @@ export default function Login({ status, canResetPassword }) {
                         className="mt-1 block w-full"
                         autoComplete="username"
                         isFocused={true}
-                        onChange={handleOnChange}
+                        onChange={onChange}
                     />
 
                     <InputError message={errors.email} className="mt-2" />
@@ -64,7 +64,7 @@ export default function Login({ status, canResetPassword }) {
                         value={data.password}
                         className="mt-1 block w-full"
                         autoComplete="current-password"
-                        onChange={handleOnChange}
+                        onChange={onChange}
                     />
 
                     <InputError message={errors.password} className="mt-2" />
@@ -72,7 +72,7 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="block mt-4">
                     <label className="flex items-center">
-                        <Checkbox name="remember" value={data.remember} onChange={handleOnChange} />
+                        <Checkbox name="remember" value={data.remember} onChange={onChange} />
                         <span className="ml-2 text-sm text-gray-600">Remember me</span>
                     </label>
                 </div>
@@ -92,6 +92,8 @@ export default function Login({ status, canResetPassword }) {
                     </PrimaryButton>
                 </div>
             </form>
-        </GuestLayout>
+        </>
     );
 }
+
+Login.layout = page => <GuestLayout children={page}></GuestLayout>

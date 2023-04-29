@@ -20,7 +20,7 @@ export default function Register() {
         };
     }, []);
 
-    const handleOnChange = (event) => {
+    const onChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 
@@ -31,7 +31,7 @@ export default function Register() {
     };
 
     return (
-        <GuestLayout>
+        <>
             <Head title="Register" />
 
             <form onSubmit={submit}>
@@ -45,7 +45,7 @@ export default function Register() {
                         className="mt-1 block w-full"
                         autoComplete="name"
                         isFocused={true}
-                        onChange={handleOnChange}
+                        onChange={onChange}
                         required
                     />
 
@@ -62,7 +62,7 @@ export default function Register() {
                         value={data.email}
                         className="mt-1 block w-full"
                         autoComplete="username"
-                        onChange={handleOnChange}
+                        onChange={onChange}
                         required
                     />
 
@@ -79,7 +79,7 @@ export default function Register() {
                         value={data.password}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
-                        onChange={handleOnChange}
+                        onChange={onChange}
                         required
                     />
 
@@ -96,7 +96,7 @@ export default function Register() {
                         value={data.password_confirmation}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
-                        onChange={handleOnChange}
+                        onChange={onChange}
                         required
                     />
 
@@ -116,6 +116,10 @@ export default function Register() {
                     </PrimaryButton>
                 </div>
             </form>
-        </GuestLayout>
+        </>
     );
 }
+
+
+
+Register.layout = page => <GuestLayout children={page}></GuestLayout>
