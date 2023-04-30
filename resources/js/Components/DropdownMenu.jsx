@@ -31,7 +31,7 @@ function DropdownMenu({ label, children }) {
                         </svg>
 
                     </Menu.Button>
-                    <Menu.Items className="py-1 mt-2 bg-white rounded border overflow-hidden absolute w-64 top-full right-0">
+                    <Menu.Items className="py-1 mt-2 bg-white rounded-lg shadow-sm border overflow-hidden absolute w-64 top-full right-0">
                         {children}
                     </Menu.Items>
                 </>
