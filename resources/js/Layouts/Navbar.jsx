@@ -14,9 +14,10 @@ export default function Navbar() {
                     <ApplicationLogo />
                     <div className="flex items-center gap-x-6">
                         <NavLink href='/'>Home</NavLink>
-                        <NavLink href='/dashboard'>Dashboard</NavLink>
+                        <NavLink href='/products'>Products</NavLink>
                         {auth.user ? (<>
                             <DropdownMenu label={auth.user.name}>
+                                <DropdownMenu.Links href='/dashboard'>Dashboard</DropdownMenu.Links>
                                 <DropdownMenu.Links href='/profile'>{auth.user.name}</DropdownMenu.Links>
                                 <DropdownMenu.Links href='/cart'>Your cart</DropdownMenu.Links>
                                 <DropdownMenu.Links href='/history'>Your history</DropdownMenu.Links>
