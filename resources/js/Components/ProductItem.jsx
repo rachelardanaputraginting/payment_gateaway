@@ -11,7 +11,7 @@ export default function ProductItem({ product }) {
             <div className="mt-4">
                 <Link className='text-sm block-mb-2 line-clamp-1' href={`/products/${product.slug}`}>{product.name}</Link>
                 <div className="flex items-center justify-between">
-                    <Link href={`/products?category=${product.category.name}`}>{product.category.name}</Link>
+                    <Link href={`/products?category=${product.category.slug}`}>{product.category.name}</Link>
                     <div>Rp. {numberFormat(product.price)}</div>
                 </div>
             </div>
