@@ -6,7 +6,7 @@ import NavLink from '@/Components/NavLink';
 import DropdownMenu from '@/Components/DropdownMenu';
 
 export default function Navbar() {
-    const { auth } = usePage().props
+    const { auth, categories_global } = usePage().props
     return (
         <nav className='bg-white border-b py-2'>
             <Container>
@@ -15,9 +15,14 @@ export default function Navbar() {
                     <div className="flex items-center gap-x-6">
                         <NavLink href='/'>Home</NavLink>
                         <NavLink href='/products'>Products</NavLink>
+                        <DropdownMenu label={`Categories`}>
+                            {categories_global.map(category => (
+                                <DropdownMenu.Links key={category.slug} href={`/products?category=${category.slug}`}>{category.name}</DropdownMenu.Links>
+                            ))}
+                        </DropdownMenu>
                         {auth.user ? (<>
                             <DropdownMenu label={auth.user.name}>
-                                <DropdownMenu.Links href='/dashboard'>Dashboard</DropdownMenu.Links>
+
                                 <DropdownMenu.Links href='/profile'>{auth.user.name}</DropdownMenu.Links>
                                 <DropdownMenu.Links href='/cart'>Your cart</DropdownMenu.Links>
                                 <DropdownMenu.Links href='/history'>Your history</DropdownMenu.Links>
