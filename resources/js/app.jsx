@@ -6,7 +6,7 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { Inertia } from '@inertiajs/inertia'
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Payment Gateaway';
 
 Inertia.on('navigate', window.scrollTo(0, 0));
 
@@ -18,7 +18,11 @@ createInertiaApp({
 
         root.render(<App {...props} />);
     },
-    progress: {
-        color: '#4B5563',
-    },
 });
+
+InertiaProgress.init({
+    delay: 0,
+    color: '#29d',
+    includeCSS: true,
+    showSpinner: true,
+})

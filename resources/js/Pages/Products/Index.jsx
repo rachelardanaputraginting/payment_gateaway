@@ -11,7 +11,7 @@ export default function Index(props) {
     return (
         <>
             <Head title="Our Products" />
-            <Header title='Products' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur molestias eveniet iure porro autem repellat adipisci aliquam itaque aspernatur placeat.' />
+            <Header title='Our Products' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur molestias eveniet iure porro autem repellat adipisci aliquam itaque aspernatur placeat.' />
             <Container>
                 {products.length ?
                     <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
