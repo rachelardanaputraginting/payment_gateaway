@@ -4,8 +4,13 @@ import App from '@/Layouts/App';
 import { numberFormat } from '@/Libs/helper';
 import PrimaryButton from '@/Components/PrimaryButton';
 import Container from '@/Components/Container';
-
+import { Inertia } from '@inertiajs/inertia';
 export default function Show({ product }) {
+    const addToCart = () => {
+        Inertia.post(route('cart.store', product), {}, {
+            onSuccess: () => toast.success('Added to cart!'),
+        });
+    }
     return (
         <>
             <Head title={product.name} />
@@ -22,7 +27,7 @@ export default function Show({ product }) {
                             <div className='font-semibold text-4xl'><sup>Rp</sup> {numberFormat(product.price)}</div>
                         </div>
 
-                        <PrimaryButton>Add to cart</PrimaryButton>
+                        <PrimaryButton onClick={addToCart}>Add to cart</PrimaryButton>
                     </div>
                 </div>
             </Container>
