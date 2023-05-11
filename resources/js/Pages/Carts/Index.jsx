@@ -7,7 +7,7 @@ import { numberFormat } from '@/Libs/helper';
 import { toast } from 'react-hot-toast';
 import Table from '@/Components/Table';
 import Card from '@/Components/Card';
-import ButtonLink from '@/Components/ButtonLink';
+import DropdownMenu from '@/Components/DropdownMenu';
 
 export default function Index({ carts }) {
     const { delete: destroy } = useForm()
@@ -82,8 +82,13 @@ export default function Index({ carts }) {
                     </Card.Table>
                 </Card>
 
-                <div className="mt-4 flex justify-end">
-                    <ButtonLink href={``}>Pilih metode pembayaran</ButtonLink>
+                <div className="mt-4 flex justify-end ">
+                    <DropdownMenu buttonClassName="bg-blue-600 text-white px-4 py-2 rounded-lg" label='payment method'>
+                        <DropdownMenu.Links href={``}>Gopay</DropdownMenu.Links>
+                        <DropdownMenu.Divider />
+                        <DropdownMenu.Links href={``}>BCA Virtual Account</DropdownMenu.Links>
+                        <DropdownMenu.Links href={``}>BNI Virtual Account</DropdownMenu.Links>
+                    </DropdownMenu>
                 </div>
             </Container>
         </>
