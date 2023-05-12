@@ -10,10 +10,17 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $cast = [
         'succeeded_at' => 'datetime',
-        'payment_info' => 'array',
+        'payment_info' => 'string',
         'card_ids' => 'array',
         'status' => InvoiceStatus::class,
     ];
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

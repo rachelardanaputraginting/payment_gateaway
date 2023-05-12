@@ -17,8 +17,9 @@ export default function Index({ carts }) {
             onSuccess: () => toast.success('Removed')
         })
     }
-
-    let ppn = (11 / 100) * carts.reduce((acc, cart) => acc + cart.price, 0);
+    let subtotal = carts.reduce((acc, cart) => acc + cart.price, 0)
+    let ppn = (11 / 100) * subtotal;
+    let total = ppn + subtotal;
     return (
         <>
             {/* {toast.success('Removed')} */}
@@ -84,7 +85,7 @@ export default function Index({ carts }) {
 
                 <div className="mt-4 flex justify-end ">
                     <DropdownMenu buttonClassName="bg-blue-600 text-white px-4 py-2 rounded-lg" label='payment method'>
-                        <DropdownMenu.Links href={``}>Gopay</DropdownMenu.Links>
+                        <DropdownMenu.Links href='/invoice' method="post" as='button' data={{ carts: carts, total: total, payment_type: 'gopay' }}>Gopay</DropdownMenu.Links>
                         <DropdownMenu.Divider />
                         <DropdownMenu.Links href={``}>BCA Virtual Account</DropdownMenu.Links>
                         <DropdownMenu.Links href={``}>BNI Virtual Account</DropdownMenu.Links>
