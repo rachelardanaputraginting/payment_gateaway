@@ -14,7 +14,7 @@ class Invoice extends Model
 
     protected $cast = [
         'succeeded_at' => 'datetime',
-        'payment_info' => 'string',
+        'payment_info' => 'array',
         'card_ids' => 'array',
         'status' => InvoiceStatus::class,
     ];

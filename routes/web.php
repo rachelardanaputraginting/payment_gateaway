@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 
 Route::post('/invoice', [InvoiceController::class, 'store'])->name('invoice.store');
-Route::get('/invoice/{invoice:order_id}', [InvoiceController::class, 'store'])->name('invoice.show');
+Route::get('/invoice/{invoice:order_id}', [InvoiceController::class, 'show'])->name('invoice.show');
 Route::get('/carts', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/carts/delete/{cart}', [CartController::class, 'destroy'])->name('cart.delete');
 Route::post('/carts/add_to_cart/{product:slug}', [CartController::class, 'store'])->name('cart.store');

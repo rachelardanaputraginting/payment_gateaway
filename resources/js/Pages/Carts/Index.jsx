@@ -87,8 +87,8 @@ export default function Index({ carts }) {
                     <DropdownMenu buttonClassName="bg-blue-600 text-white px-4 py-2 rounded-lg" label='payment method'>
                         <DropdownMenu.Links href='/invoice' method="post" as='button' data={{ carts: carts, total: total, payment_type: 'gopay' }}>Gopay</DropdownMenu.Links>
                         <DropdownMenu.Divider />
-                        <DropdownMenu.Links href={``}>BCA Virtual Account</DropdownMenu.Links>
-                        <DropdownMenu.Links href={``}>BNI Virtual Account</DropdownMenu.Links>
+                        <DropdownMenu.Links href='/invoice' method="post" as='button' data={{ carts: carts, total: total, payment_type: 'bank_transfer', bank: 'bca' }}>BCA Virtual Account</DropdownMenu.Links>
+                        <DropdownMenu.Links href='/invoice' method="post" as='button' data={{ carts: carts, total: total, payment_type: 'bank_transfer', bank: 'bni' }}>BNI Virtual Account</DropdownMenu.Links>
                     </DropdownMenu>
                 </div>
             </Container>
