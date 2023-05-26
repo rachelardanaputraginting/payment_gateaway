@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('order_id');
             $table->double('gross_amount');
             $table->string('status')->default(App\Enums\InvoiceStatus::PENDING->value);
-            $table->json('card_ids');
+            $table->json('cart_ids');
             $table->json('payment_info')->nullable();
             $table->string('payment_type')->nullable();
             $table->dateTime('succeeded_at')->nullable();

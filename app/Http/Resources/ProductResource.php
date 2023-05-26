@@ -20,7 +20,7 @@ class ProductResource extends JsonResource
             'price' => $this->price,
             'slug' => $this->slug,
             'name' => $this->name,
-            'picture' => $this->picture ? Storage::url($this->pricture) : 'https://fakeimg.pl/200x320/?text=Book&font=noto',
+            'picture' => $this->picture ? Storage::url($this->picture) : 'https://fakeimg.pl/200x320/?text=Book&font=noto',
             'category' => [
                 'id' => $this->category->id,
                 'name' => $this->category->name,

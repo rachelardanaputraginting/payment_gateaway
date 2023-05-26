@@ -8,15 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
+
 class InvoiceController extends Controller
 {
     public function store(Request $request)
     {
         $total = (int) $request->total;
         // dd($request->payment_type);
-        $card_ids = $request->collect('carts')->pluck('id');
-        // $order_id = 'order-' . now()->format('Y') . $request->user()->id . $card_ids->implode('');
-        $order_id = 'order-' . 654237 . $request->user()->id . $card_ids->implode('');
+        $cart_ids = $request->collect('carts')->pluck('id');
+        // $order_id = 'order-' . now()->format('Y') . $request->user()->id . $cart_ids->implode('');
+        $order_id = 'order-' . rand(1, 999999999) . rand(1, 999999999) . $request->user()->id;
 
         $invoiceExists = Invoice::where('order_id', $order_id)->firstOr(fn () => false);
         if ($invoiceExists) {
@@ -25,14 +26,14 @@ class InvoiceController extends Controller
             $invoice = Auth::user()->invoices()->updateOrcreate(compact('order_id'), [
                 'order_id' => $order_id,
                 'gross_amount' => $total,
-                'card_ids' => $card_ids,
+                'cart_ids' => $cart_ids,
                 'payment_type' => $request->payment_type,
             ]);
 
             $data = [
                 'payment_type' => $request->payment_type,
                 'transaction_details' => [
-                    'gross_amount' => $total + 1,
+                    'gross_amount' => $total,
                     'order_id' => $order_id,
                 ],
                 'customer_details' => [
@@ -47,7 +48,6 @@ class InvoiceController extends Controller
                 ]),
             ];
 
-            // dd($data);
             if ($request->payment_type == 'bank_transfer') {
                 $data = [...$data, 'bank_transfer' => [
                     'bank' => $request->bank,
@@ -56,7 +56,6 @@ class InvoiceController extends Controller
 
             $response = Http::withBasicAuth(config('services.midtrans.server_key') . ':', '')
                 ->post('https://api.sandbox.midtrans.com/v2/charge', $data);
-
             $body = $response->json();
 
             $invoice->update([

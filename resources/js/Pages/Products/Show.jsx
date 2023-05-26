@@ -3,7 +3,6 @@ import { Head, Link, useForm } from '@inertiajs/react';
 import App from '@/Layouts/App';
 import { numberFormat } from '@/Libs/helper';
 import Container from '@/Components/Container';
-import { Inertia } from '@inertiajs/inertia';
 import { toast } from 'react-hot-toast';
 import Button from '@/Components/Button';
 export default function Show({ product }) {

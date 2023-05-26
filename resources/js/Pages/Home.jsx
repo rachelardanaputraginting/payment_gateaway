@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <>
             <Head title='Home' />
-            <Container>Home </Container>
+            <Container>Home</Container>
         </>
     )
 }

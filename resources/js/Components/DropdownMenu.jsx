@@ -29,7 +29,6 @@ function DropdownMenu({ buttonClassName, label, children }) {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={clsx('w-5 h-5 transition duration-200 ', open && 'rotate-180')}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                         </svg>
-
                     </Menu.Button>
                     <Menu.Items className="py-1 mt-2 bg-white rounded-lg shadow-sm border overflow-hidden absolute w-64 top-full right-0">
                         {children}

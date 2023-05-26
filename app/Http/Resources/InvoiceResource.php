@@ -20,7 +20,6 @@ class InvoiceResource extends JsonResource
         $jsonData = $this->payment_info;
         // {"bank": null, "qr_code": "https://api.sandbox.midtrans.com/v2/gopay/097a2fb9-dd98-4f96-8f1c-ae1f42126c9b/qr-code"}
         $data = json_decode($jsonData);
-        // dd($data);
         return [
             'id' => $this->id,
             'order_id' => $this->order_id,

@@ -10,7 +10,7 @@ export default function Navbar() {
     return (
         <nav className='bg-white border-b py-2'>
             <Container>
-                <div className="flex items-center justify-between">
+                <div className="flex it ems-center justify-between">
                     <ApplicationLogo />
                     <div className="flex items-center gap-x-6">
                         <NavLink href='/'>Home</NavLink>

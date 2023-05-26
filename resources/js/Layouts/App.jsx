@@ -6,12 +6,11 @@ export default function App({ auth, header, children }) {
     // const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     return (
         <div className="min-h-screen bg-gray-100">
-
             <Navbar />
             <div>
                 <Toaster
                     position="top-center"
-                // reverseOrder={false}
+                    reverseOrder={false}
                 />
             </div>
 

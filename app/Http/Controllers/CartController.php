@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Cache;
 
 class CartController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function store(Request $request, Product $product)
     {
@@ -24,7 +20,8 @@ class CartController extends Controller
             ],
             [
                 "user_id" => $request->user()->id,
-                "price" => $product->price
+                "price" => $product->price,
+                "quantity" => $product->quantity,
             ]
         );
 
